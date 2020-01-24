@@ -1,14 +1,14 @@
 # Azure Ping Test Module
 A Terraform module to deploy Azure Application Insights Webtest with alert.
 
-## Example
+## Example of creating one pair of webtest and alert.
 ```
 module "hashipingtest" {
   source                    = "ayusmadi/pingtest/azurerm"
   resource_group_name       = "hashi-rg"
   application_insights_name = "hashi-insights"
-  prefix                    = "hashicorp"
-  ping_url                  = "https://www.hashicorp.com/"
+  prefixes                  = ["hashicorp"]
+  ping_urls                 = ["https://www.hashicorp.com/"]
   monitor_action_group_name = "hashi-action-group"
 }
 ```
@@ -16,6 +16,18 @@ This code deploys the following
 * ARM deployment `hashicorp-webtest-deployment`
 * App Insights Webtest resource `hashicorp-pingtest`
 * Alert resource `hashicorp-pingtest-alert`
+
+## Example of creating multiple pairs of webtests and alerts.
+```
+module "hashipingtest" {
+  source                    = "ayusmadi/pingtest/azurerm"
+  resource_group_name       = "hashi-rg"
+  application_insights_name = "hashi-insights"
+  prefixes                  = ["hashicorp", "microsoft"]
+  ping_urls                 = ["https://www.hashicorp.com/", "https://www.microsoft.com"]
+  monitor_action_group_name = "hashi-action-group"
+}
+```
 
 ## Notes
 
