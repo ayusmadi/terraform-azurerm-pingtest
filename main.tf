@@ -49,6 +49,21 @@ resource "azurerm_template_deployment" "main" {
     },
     "location": {
       "type": "string"
+    },
+    "location1": {
+      "type": "string"
+    },
+    "location2": {
+      "type": "string"
+    },
+    "location3": {
+      "type": "string"
+    },
+    "location4": {
+      "type": "string"
+    },
+    "location5": {
+      "type": "string"
     }
   },
   "resources": [
@@ -70,19 +85,19 @@ resource "azurerm_template_deployment" "main" {
         "RetryEnabled": true,
         "Locations": [
           {
-            "Id": "emea-nl-ams-azr"
+            "Id": "[parameters('location1')]"
           },
           {
-            "Id": "us-tx-sn1-azr"
+            "Id": "[parameters('location2')]"
           },
           {
-            "Id": "us-il-ch1-azr"
+            "Id": "[parameters('location3')]"
           },
           {
-            "Id": "us-va-ash-azr"
+            "Id": "[parameters('location4')]"
           },
           {
-            "Id": "us-fl-mia-edge"
+            "Id": "[parameters('location5')]"
           }
         ],
         "Configuration": {
@@ -139,6 +154,11 @@ DEPLOY
     "pingURL"           = var.ping_urls[count.index]
     "actionGroupId"     = data.azurerm_monitor_action_group.main.id
     "location"          = data.azurerm_resource_group.main.location
+    "location1"         = var.location1
+    "location2"         = var.location2
+    "location3"         = var.location3
+    "location4"         = var.location4
+    "location5"         = var.location5
   }
 
   deployment_mode = "Incremental"

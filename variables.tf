@@ -19,3 +19,28 @@ variable "application_insights_name" {
 variable "monitor_action_group_name" {
   description = "Specifies the name of the Action Group"
 }
+
+variable "location1" {
+  description = "location1"
+  default     = "emea-nl-ams-azr"
+}
+
+variable "location2" {
+  description = "location1"
+  default     = "us-tx-sn1-azr"
+}
+
+variable "location3" {
+  description = "location1"
+  default     = "us-il-ch1-azr"
+}
+
+variable "location4" {
+  description = "location1"
+  default     = "us-va-ash-azr"
+}
+
+variable "location5" {
+  description = "location1"
+  default     = "us-fl-mia-edge"
+}
