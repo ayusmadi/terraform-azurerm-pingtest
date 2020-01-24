@@ -1,5 +1,6 @@
 # Delete application insights webtest (pingtest) along with its alert
-# Usage: <cmd> <resource_group_name> <name_prefix>
+# Usage: <cmd> $resource_group_name $name_prefix
+#        curl -s https://raw.githubusercontent.com/ayusmadi/terraform-azurerm-pingtest/master/delete.sh | bash -s $resource_group_name $name_prefix
 
 RESOURCE_GROUP_NAME=$1
 NAME=$2
