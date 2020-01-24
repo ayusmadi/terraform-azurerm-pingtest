@@ -1,4 +1,4 @@
-variable "name" {
+variable "prefix" {
   description = "Name and also prefix for pingtest and alert"
 }
 
