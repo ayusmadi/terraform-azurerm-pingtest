@@ -12,6 +12,19 @@ module "hashipingtest" {
   monitor_action_group_name = "hashi-action-group"
 }
 ```
+This code deploys the following
+* ARM deployment `hashicorp-webtest-deployment`
+* App Insights Webtest resource `hashicorp-pingtest`
+* Alert resource `hashicorp-pingtest-alert`
+
+## Notes
+
+* Terraform `destroy` will only delete ARM deployment. To delete the webtest and its alert, use the `delete.sh` script.
+
+  ```
+  $ delete.sh hashi-rg hashicorp
+  ```
+
 ## Providers
 
 | Name | Version |
