@@ -3,12 +3,12 @@ data "azurerm_resource_group" "main" {
 }
 
 data "azurerm_application_insights" "main" {
-  resource_group_name = data.azurerm_resource_group.name
+  resource_group_name = data.azurerm_resource_group.main.name
   name                = var.application_insights_name
 }
 
 data "azurerm_monitor_action_group" "main" {
-  resource_group_name = azurerm_resource_group.main.name
+  resource_group_name = data.azurerm_resource_group.main.name
   name                = var.monitor_action_group_name
 }
 
@@ -126,12 +126,12 @@ DEPLOY
 
   # these key-value pairs are passed into the ARM Template's `parameters` block
   parameters = {
-    "appName"           = azurerm_application_insights.test.name
-	  "pingTestName"      = "${var.name}-pingtest"
-	  "pingAlertRuleName" = "${var.name}-pingtest-alert"
-	  "pingURL"           = var.ping_url
-	  "actionGroupId"     = data.azurerm_monitor_action_group.main.id
-	  "location"          = data.azurerm_resource_group.main.location
+    "appName"           = data.azurerm_application_insights.main.name
+    "pingTestName"      = "${var.name}-pingtest"
+    "pingAlertRuleName" = "${var.name}-pingtest-alert"
+    "pingURL"           = var.ping_url
+    "actionGroupId"     = data.azurerm_monitor_action_group.main.id
+    "location"          = data.azurerm_resource_group.main.location
   }
 
   deployment_mode = "Incremental"
