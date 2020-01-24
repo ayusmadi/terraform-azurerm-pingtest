@@ -1,3 +1,9 @@
+terraform {
+  required_providers {
+    azurerm = "~> 1.41"
+  }
+}
+
 data "azurerm_resource_group" "main" {
   name = var.resource_group_name
 }
