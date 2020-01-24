@@ -1,9 +1,11 @@
-variable "prefix" {
-  description = "Name and also prefix for pingtest and alert"
+variable "prefixes" {
+  type        = list(string)
+  description = "List of names or prefixes for pingtest and alert"
 }
 
-variable "ping_url" {
-  description = "The URL can be any web page you want to test, but it must be visible from the public internet. The URL can include a query string. So, for example, you can exercise your database a little. If the URL resolves to a redirect, we follow it up to 10 redirects."
+variable "ping_urls" {
+  type        = list(string)
+  description = "List of URLs can be any web page you want to test, but it must be visible from the public internet. The URL can include a query string. So, for example, you can exercise your database a little. If the URL resolves to a redirect, we follow it up to 10 redirects."
 }
 
 variable "resource_group_name" {

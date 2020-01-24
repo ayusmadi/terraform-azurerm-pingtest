@@ -19,7 +19,8 @@ data "azurerm_monitor_action_group" "main" {
 }
 
 resource "azurerm_template_deployment" "main" {
-  name                = "${var.prefix}-webtest-deployment"
+  count               = length(var.prefixes)
+  name                = "${var.prefixes[count.index]}-webtest-deployment"
   resource_group_name = data.azurerm_resource_group.main.name
 
   template_body = <<DEPLOY
@@ -133,9 +134,9 @@ DEPLOY
   # these key-value pairs are passed into the ARM Template's `parameters` block
   parameters = {
     "appName"           = data.azurerm_application_insights.main.name
-    "pingTestName"      = "${var.prefix}-pingtest"
-    "pingAlertRuleName" = "${var.prefix}-pingtest-alert"
-    "pingURL"           = var.ping_url
+    "pingTestName"      = "${var.prefixes[count.index]}-pingtest"
+    "pingAlertRuleName" = "${var.prefixes[count.index]}-pingtest-alert"
+    "pingURL"           = var.ping_urls[count.index]
     "actionGroupId"     = data.azurerm_monitor_action_group.main.id
     "location"          = data.azurerm_resource_group.main.location
   }
