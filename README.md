@@ -48,9 +48,14 @@ module "hashipingtest" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | application\_insights\_name | Specifies the name of the Application Insights component. | `any` | n/a | yes |
+| location1 | location1 | `string` | `"emea-nl-ams-azr"` | no |
+| location2 | location1 | `string` | `"us-tx-sn1-azr"` | no |
+| location3 | location1 | `string` | `"us-il-ch1-azr"` | no |
+| location4 | location1 | `string` | `"us-va-ash-azr"` | no |
+| location5 | location1 | `string` | `"us-fl-mia-edge"` | no |
 | monitor\_action\_group\_name | Specifies the name of the Action Group | `any` | n/a | yes |
-| ping\_urls | The URL can be any web page you want to test, but it must be visible from the public internet. The URL can include a query string. So, for example, you can exercise your database a little. If the URL resolves to a redirect, we follow it up to 10 redirects. | `list(string)` | n/a | yes |
-| prefixes | Name and also prefix for pingtest and alert | `list(string)` | n/a | yes |
+| ping\_urls | List of URLs can be any web page you want to test, but it must be visible from the public internet. The URL can include a query string. So, for example, you can exercise your database a little. If the URL resolves to a redirect, we follow it up to 10 redirects. | `list(string)` | n/a | yes |
+| prefixes | List of names or prefixes for pingtest and alert | `list(string)` | n/a | yes |
 | resource\_group\_name | Specifies the name of the resource group. | `any` | n/a | yes |
 
 ## Outputs
